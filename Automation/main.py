@@ -31,4 +31,32 @@ print("The following season has the best rating: Season " + maxRatedSeason)
 
 avg = np.round((np.sum(ratings) / ratings.size), 2)
 
-print(avg)
+
+print("The average rating is: " + str(avg))
+
+# Get dates
+
+dates = np.array(firstTable['Originally aired'], dtype=str)[1:]
+dates = [date.replace('\xa0', ' ') for date in dates]
+
+
+dates = pd.to_datetime(dates)
+dates = np.array(dates, dtype=np.datetime64)
+
+
+
+
+
+# Get the best rated season between two dates
+
+def getDateIdxs(fromDate, toDate):
+    return np.where(np.logical_and(dates >= np.datetime64(fromDate), dates <= np.datetime64(toDate)))[0]
+
+
+filtered_date_idxs = getDateIdxs('2000-01-01', '2012-12-31')
+filtered_ratings = ratings[filtered_date_idxs]
+
+maxRatedSeason_time = seasons[(np.max(filtered_ratings) == ratings)][0]
+
+
+print("The following season has the best rating between 2000 and 2012: Season " + maxRatedSeason_time)
