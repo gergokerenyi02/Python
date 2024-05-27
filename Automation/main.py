@@ -5,11 +5,11 @@ from selenium.webdriver.chrome.service import Service
 website = "https://www.thesun.co.uk/sport/football"
 
 # Path to the chromedriver
-path = "./chromedriver"
+#path = "./chromedriver"
 
 # Setting up the driver
-service = Service(executable_path=path)
-driver = webdriver.Chrome(service=service)
+#service = Service(executable_path=path)
+driver = webdriver.Chrome()
 
 # Opening the website
 driver.get(website)
