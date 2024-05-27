@@ -1,3 +1,4 @@
+import pandas as pd
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
@@ -48,9 +49,17 @@ for container in containers:
     
 
 
-print(titles)
-print(prices)
-print(links)
-print(stocks)
+#print(titles)
+#print(prices)
+#print(links)
+#print(stocks)
+
+pd.DataFrame({
+    'Title': titles,
+    'Price': prices,
+    'Link': links,
+    'Stock': stocks
+}).to_csv("books.csv")
+
 
 driver.quit()
