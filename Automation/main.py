@@ -9,7 +9,9 @@ website = "https://www.thesun.co.uk/sport/football"
 
 # Setting up the driver
 #service = Service(executable_path=path)
-driver = webdriver.Chrome()
+
+
+driver = webdriver.Chrome() # Added chromedriver to usr/local/bin
 
 # Opening the website
 driver.get(website)
